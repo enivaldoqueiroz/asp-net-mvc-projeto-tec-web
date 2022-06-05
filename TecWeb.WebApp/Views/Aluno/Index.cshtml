@@ -1,0 +1,19 @@
+﻿@model List<AlunoModel>
+
+@{
+    ViewBag.Title = "AlunoModel";
+}
+
+<h2>Aluno</h2>
+
+<div class="list-group">
+    <a href="#" class="list-group-item active">
+        <h3>Aluno</h3>
+    </a>
+    @foreach (var aluno in Model)
+    {
+        <a href="@Url.Action("index", "Disciplina", new { idAluno = aluno.IdAluno, nomeAlumo = aluno.Nome })" class="list-group-item">
+            @aluno.Nome
+        </a>
+    }
+</div>

@@ -12,8 +12,10 @@
     </a>
     @foreach (var aluno in Model)
     {
-        <a href="@Url.Action("index", "Disciplina", new { idAluno = aluno.IdAluno, nomeAlumo = aluno.Nome })" class="list-group-item">
+        <a href="#" onclick="loadDoc('@Url.Action("index", "Disciplina", new { idAluno = aluno.IdAluno, nomeAlumo = aluno.Nome })')" class="list-group-item">
             @aluno.Nome
         </a>
     }
 </div>
+
+<div id="demo"></div>

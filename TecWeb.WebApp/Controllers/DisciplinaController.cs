@@ -36,7 +36,7 @@ namespace TecWeb.WebApp.Controllers
                                               , sqlRead["Curso"].ToString()));
             }
 
-            return View(disciplinaModels);
+            return PartialView(disciplinaModels);
         }
     }
 }

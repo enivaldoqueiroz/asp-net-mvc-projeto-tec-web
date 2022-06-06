@@ -5,16 +5,31 @@
 }
 
 <h2>Aluno</h2>
-
-<div class="list-group">
-    <a href="#" class="list-group-item active">
-        <h3>Aluno</h3>
-    </a>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     @foreach (var aluno in Model)
     {
-        <a href="#" onclick="loadDoc('@Url.Action("index", "Disciplina", new { idAluno = aluno.IdAluno, nomeAlumo = aluno.Nome })')" class="list-group-item" data-toggle="modal" data-target="#myModal">
-            @aluno.Nome
-        </a>
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_@aluno.IdAluno" aria-expanded="true" aria-controls="collapseOne">
+                        @aluno.Nome
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_@aluno.IdAluno" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body">
+                    <label>RA:&nbsp;&nbsp;</label>@aluno.RA
+                    <br />
+                    <label>Data Nascimento:&nbsp;&nbsp;</label>@aluno.DataNascimento.ToString("dd/MM/yyyy")
+
+                    <div class="panel-footer">
+                        <a href="#" onclick="loadDoc('@Url.Action("index", "Disciplina", new { idAluno = aluno.IdAluno, nomeAlumo = aluno.Nome })')" data-toggle="modal" data-target="#myModal">
+                            Disciplinas
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
 </div>
 

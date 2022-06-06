@@ -12,10 +12,27 @@
     </a>
     @foreach (var aluno in Model)
     {
-        <a href="#" onclick="loadDoc('@Url.Action("index", "Disciplina", new { idAluno = aluno.IdAluno, nomeAlumo = aluno.Nome })')" class="list-group-item">
+        <a href="#" onclick="loadDoc('@Url.Action("index", "Disciplina", new { idAluno = aluno.IdAluno, nomeAlumo = aluno.Nome })')" class="list-group-item" data-toggle="modal" data-target="#myModal">
             @aluno.Nome
         </a>
     }
 </div>
 
 <div id="demo"></div>
+<!-- Modal -->
+@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Disciplinas</h4>
+            </div>
+            <div class="modal-body">
+                <div id="demo"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>*@

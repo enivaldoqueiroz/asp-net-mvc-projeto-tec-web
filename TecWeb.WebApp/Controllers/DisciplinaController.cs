@@ -23,19 +23,18 @@ namespace TecWeb.WebApp.Controllers
 
             minhaConexao.Open();
 
-            string select = "SELECT * FROM[TecWeb].[dbo].[Disciplina] INNER JOIN AlunoDisciplina ON Disciplina.IdDisciplina =  AlunoDisciplina.idAluno WHERE AlunoDisciplina.idAluno = " + idAluno;
+            string select = "SELECT * FROM[TecWeb].[dbo].[Disciplina] INNER JOIN AlunoDisciplina ON Disciplina.IdDisciplina =  AlunoDisciplina.idDisciplina WHERE AlunoDisciplina.idAluno = " + idAluno;
             SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
             SqlDataReader sqlRead = selectCommand.ExecuteReader();
 
             while (sqlRead.Read())
             {
                 disciplinaModels.Add(new DisciplinaModel(int.Parse(sqlRead["IdDisciplina"].ToString())
+                                              , idAluno
                                               , sqlRead["Nome"].ToString()
                                               , sqlRead["Semestre"].ToString()
                                               , sqlRead["Curso"].ToString()));
             }
-
-            List<DisciplinaModel> disciplinaModelsDeAluno = disciplinaModels.Where(x => x.IdAluno == idAluno ).ToList();
 
             return View(disciplinaModels);
         }

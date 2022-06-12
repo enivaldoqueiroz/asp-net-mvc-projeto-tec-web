@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -32,9 +34,29 @@ namespace TecWeb.WebApp.Models
             Curso = curso;
         }
 
-        internal static List<DisciplinaModel> Where(Func<object, object> p)
+        public static List<DisciplinaModel> disciplinaModels(int idAluno)
         {
-            throw new NotImplementedException();
+            List<DisciplinaModel> disciplinaModels = new List<DisciplinaModel>();
+
+
+            SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
+
+            minhaConexao.Open();
+
+            string select = "SELECT * FROM[TecWeb].[dbo].[Disciplina] INNER JOIN AlunoDisciplina ON Disciplina.IdDisciplina =  AlunoDisciplina.idDisciplina WHERE AlunoDisciplina.idAluno = " + idAluno;
+            SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
+            SqlDataReader sqlRead = selectCommand.ExecuteReader();
+
+            while (sqlRead.Read())
+            {
+                disciplinaModels.Add(new DisciplinaModel(int.Parse(sqlRead["IdDisciplina"].ToString())
+                                              , idAluno
+                                              , sqlRead["Nome"].ToString()
+                                              , sqlRead["Semestre"].ToString()
+                                              , sqlRead["Curso"].ToString()));
+            }
+
+            return disciplinaModels;
         }
     }
 }

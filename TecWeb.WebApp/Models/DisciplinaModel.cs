@@ -34,7 +34,7 @@ namespace TecWeb.WebApp.Models
             Curso = curso;
         }
 
-        public static List<DisciplinaModel> disciplinaModels(int idAluno)
+        public static List<DisciplinaModel> listarDisciplinasPeloAluno(int idAluno)
         {
             List<DisciplinaModel> disciplinaModels = new List<DisciplinaModel>();
 
@@ -54,6 +54,30 @@ namespace TecWeb.WebApp.Models
                                               , sqlRead["Nome"].ToString()
                                               , sqlRead["Semestre"].ToString()
                                               , sqlRead["Curso"].ToString()));
+            }
+
+            return disciplinaModels;
+        }
+
+        public static List<DisciplinaModel> listarDisciplinas()
+        {
+            List<DisciplinaModel> disciplinaModels = new List<DisciplinaModel>();
+
+
+            SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
+
+            minhaConexao.Open();
+
+            string select = "SELECT * FROM[TecWeb].[dbo].[Disciplina]";
+            SqlCommand selectCommand = new SqlCommand(select, minhaConexao);
+            SqlDataReader sqlRead = selectCommand.ExecuteReader();
+
+            while (sqlRead.Read())
+            {
+                disciplinaModels.Add(new DisciplinaModel(int.Parse(sqlRead["IdDisciplina"].ToString())
+                                              ,sqlRead["Nome"].ToString()
+                                              ,sqlRead["Semestre"].ToString()
+                                              ,sqlRead["Curso"].ToString()));
             }
 
             return disciplinaModels;

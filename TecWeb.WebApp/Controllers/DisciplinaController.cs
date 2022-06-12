@@ -16,9 +16,15 @@ namespace TecWeb.WebApp.Controllers
         {
             ViewBag.idAluno = idAluno;
             ViewBag.NomeAluno = nomeAluno;
-            List<DisciplinaModel> disciplinaModels = DisciplinaModel.disciplinaModels(idAluno);
+            List<DisciplinaModel> disciplinaModels = DisciplinaModel.listarDisciplinasPeloAluno(idAluno);
 
             return PartialView(disciplinaModels);
+        }
+
+        public ActionResult Disciplinas()
+        {
+            List<DisciplinaModel> disciplinaModels = DisciplinaModel.listarDisciplinas();
+            return View(disciplinaModels);
         }
     }
 }

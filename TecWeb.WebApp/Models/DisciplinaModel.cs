@@ -14,6 +14,7 @@ namespace TecWeb.WebApp.Models
         public string Nome { get; set; }
         public string Semestre { get; set; }
         public string Curso { get; set; }
+        public List<AlunoModel> Alunos { get; set; }
 
         public DisciplinaModel() { }
 
@@ -24,6 +25,7 @@ namespace TecWeb.WebApp.Models
             Nome = nome;
             Semestre = semestre;
             Curso = curso;
+            Alunos = AlunoModel.ListarAlunosPelaDisciplina(idDisciplina);
         }
 
         public DisciplinaModel(int idDisciplina, string nome, string semestre, string curso)
@@ -32,6 +34,7 @@ namespace TecWeb.WebApp.Models
             Nome = nome;
             Semestre = semestre;
             Curso = curso;
+            Alunos = AlunoModel.ListarAlunosPelaDisciplina(idDisciplina);
         }
 
         public static List<DisciplinaModel> listarDisciplinasPeloAluno(int idAluno)

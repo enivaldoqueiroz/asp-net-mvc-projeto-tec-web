@@ -10,8 +10,8 @@
     <thead>
         <tr>
             <td>Cod. Disciplina</td>
-            <td>Nome do Aluno</td>
             <td>Nome do Disciplina</td>
+            <td>Alunos - RA</td>
             <td>Semestre</td>
             <td>Curso</td>
         </tr>
@@ -22,6 +22,13 @@
             <tr>
                 <td>@disc.IdDisciplina</td>
                 <td>@disc.Nome</td>
+                <td>
+                    @foreach (var aluno in disc.Alunos)
+                    {
+                        @aluno.Nome <b>-</b>
+                        @aluno.RA <br />
+                    }
+                </td>
                 <td>@disc.Semestre</td>
                 <td>@disc.Curso</td>
             </tr>

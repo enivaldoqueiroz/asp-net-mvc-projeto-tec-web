@@ -85,5 +85,19 @@ namespace TecWeb.WebApp.Models
 
             return disciplinaModels;
         }
+
+        public static string novaDisciplina(string nome, string semestre, string curso)
+        {
+
+            SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
+
+            minhaConexao.Open();
+
+            string insert = string.Format("INSERT INTO Disciplina (Nome, Semestre, Curso) VALUES ( '{0}', '{1}', '{2}')", nome, semestre, curso);
+            SqlCommand selectCommand = new SqlCommand(insert, minhaConexao);
+            selectCommand.ExecuteNonQuery();
+
+            return "Sucesso";
+        }
     }
 }

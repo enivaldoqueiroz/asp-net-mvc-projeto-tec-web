@@ -167,6 +167,7 @@
     <Content Include="Views\Aluno\Index.cshtml" />
     <Content Include="Views\Disciplina\Index.cshtml" />
     <Content Include="Views\Disciplina\Disciplinas.cshtml" />
+    <Content Include="Views\Disciplina\novaDisciplina.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

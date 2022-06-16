@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "novaDisciplina";
+}
+
+<form action="@Url.Action("novaDisciplina", "Disciplina")" method="post">
+    <fieldset>
+        <legend>Nova Disciplina</legend>
+        @if (!string.IsNullOrEmpty(ViewBag.sucesso))
+        {
+            <div class="alert alert-success">
+                Disciplina inserida com <strong>Sucesso!</strong> .
+            </div>
+        }
+        <div>
+            <label for="Nome">Nome</label>
+        </div>
+        <div>
+            <input type="text" id="Nome" name="Nome" />
+        </div>
+        <div>
+            <label for="Semestre">Semestre</label>
+        </div>
+        <div>
+            <input type="text" id="Semestre" name="Semestre"/>
+        </div>
+        <div>
+            <label for="Curso">Curso</label>
+        </div>
+        <div>
+            <input type="text" id="Curso" name="Curso"/>
+        </div>
+        <br />
+        <input type="submit" class="btn btn-default" value="Criar Disciplina"/>
+    </fieldset>
+</form>

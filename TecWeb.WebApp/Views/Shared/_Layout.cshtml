@@ -7,14 +7,14 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script>
-        function loadDoc(rota) {
+        function loadDoc(rota, verbo) {
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
                 if (xhttp.readyState == 4 && xhttp.status == 200) {
                     document.getElementById("demo").innerHTML = xhttp.responseText;
                 }
             };
-            xhttp.open("POST", rota, true);
+            xhttp.open(verbo, rota, true);
             xhttp.send();
         }
     </script>
@@ -32,7 +32,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Principal", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("Principal", "Index", "Home")</li>*@
                     <li>@Html.ActionLink("Aluno", "index", "Aluno")</li>
                     <li>@Html.ActionLink("Disciplinas", "disciplinas", "Disciplina")</li>
                 </ul>

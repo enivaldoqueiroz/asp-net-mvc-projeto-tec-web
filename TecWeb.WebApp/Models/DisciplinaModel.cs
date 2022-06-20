@@ -99,5 +99,19 @@ namespace TecWeb.WebApp.Models
 
             return "Sucesso";
         }
+
+        public static string excluirVinculoDisciplinaAluno(int idAluno, int idDisciplina)
+        {
+
+            SqlConnection minhaConexao = new SqlConnection(ConfigurationManager.ConnectionStrings["minhaConexao"].ConnectionString);
+
+            minhaConexao.Open();
+
+            string delete = string.Format("DELETE FROM [dbo].[AlunoDisciplina] WHERE idAluno = {0} AND idDisciplina = {1}", idAluno, idDisciplina);
+            SqlCommand selectCommand = new SqlCommand(delete, minhaConexao);
+            selectCommand.ExecuteNonQuery();
+
+            return "Sucesso";
+        }
     }
 }

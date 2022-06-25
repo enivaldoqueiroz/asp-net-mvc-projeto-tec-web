@@ -27,7 +27,7 @@
                 <td>@disc.Semestre</td>
                 <td>@disc.Curso</td>
                 <td>
-                    <button onclick="loadDoc('@Url.Action("index", "Disciplina", new { idAluno = @disc.IdAluno, idDisciplina = @disc.IdDisciplina })', 'POST')" type="button" class="btn btn-danger">Excluir</button>
+                    <button onclick="loadDoc('@Url.Action("index", "Disciplina", new { idAluno = @disc.IdAluno, idDisciplina = @disc.IdDisciplina, NomeAluno = @ViewBag.NomeAluno })', 'POST')" type="button" class="btn btn-danger">Excluir</button>
                 </td>
             </tr>
         }

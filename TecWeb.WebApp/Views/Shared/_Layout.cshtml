@@ -8,14 +8,26 @@
     @Scripts.Render("~/bundles/modernizr")
     <script>
         function loadDoc(rota, verbo) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (xhttp.readyState == 4 && xhttp.status == 200) {
-                    document.getElementById("demo").innerHTML = xhttp.responseText;
+
+            //JQUERY
+            $.ajax({
+                method: verbo,
+                url: rota,
+                success: function (retorno) {
+                    $("#demo").html(retorno);
                 }
-            };
-            xhttp.open(verbo, rota, true);
-            xhttp.send();
+
+            });
+
+            //JavaScript
+            //var xhttp = new XMLHttpRequest();
+            //xhttp.onreadystatechange = function () {
+            //    if (xhttp.readyState == 4 && xhttp.status == 200) {
+            //        document.getElementById("demo").innerHTML = xhttp.responseText;
+            //    }
+            //};
+            //xhttp.open(verbo, rota, true);
+            //xhttp.send();
         }
     </script>
 </head>

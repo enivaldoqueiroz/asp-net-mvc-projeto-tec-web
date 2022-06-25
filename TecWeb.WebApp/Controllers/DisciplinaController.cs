@@ -23,9 +23,10 @@ namespace TecWeb.WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(int idAluno, int idDisciplina)
+        public ActionResult Index(int idAluno, int idDisciplina, string nomeAluno)
         {
             string resultado = DisciplinaModel.excluirVinculoDisciplinaAluno(idAluno, idDisciplina);
+            ViewBag.NomeAluno = nomeAluno;
             List<DisciplinaModel> disciplinaModels = DisciplinaModel.listarDisciplinasPeloAluno(idAluno);
 
             return PartialView(disciplinaModels);

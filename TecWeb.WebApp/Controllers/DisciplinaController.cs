@@ -26,7 +26,9 @@ namespace TecWeb.WebApp.Controllers
         public ActionResult Index(int idAluno, int idDisciplina)
         {
             string resultado = DisciplinaModel.excluirVinculoDisciplinaAluno(idAluno, idDisciplina);
-            return View(resultado);
+            List<DisciplinaModel> disciplinaModels = DisciplinaModel.listarDisciplinasPeloAluno(idAluno);
+
+            return PartialView(disciplinaModels);
         }
 
         public ActionResult Disciplinas()
